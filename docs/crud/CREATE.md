@@ -6,7 +6,7 @@ Elasticsearch supports runtime indexing with dynamic mappings. Mapping datatypes
 
 ### Create Index with  Mapping
 
-- Create the index only with mappings defined
+#### Create the index only with mappings defined
 
 ```bash
 curl -X PUT "localhost:9200/customer?pretty" -H 'Content-Type: application/json' -d'
@@ -26,7 +26,7 @@ curl -X PUT "localhost:9200/customer?pretty" -H 'Content-Type: application/json'
 
 Above query creates the index with mappings
 
-- Get list of indices
+#### Get list of indices
 
 ```bash
 curl -X GET "localhost:9200/_cat/indices?v"
@@ -38,7 +38,7 @@ curl -X GET "localhost:9200/_cat/indices?v"
 |green|open|customer|NwVUkAz3ROWCbuG2MxFYVw|5|0|2|0|7.6kb|7.6kb|
 
 
-- Get the mappings and setting 
+#### Get the mappings and setting 
 
 ```bash
 curl -X GET "localhost:9200/customer?pretty"
@@ -78,7 +78,7 @@ curl -X GET "localhost:9200/customer?pretty"
 }
 ```
 
-- Insert Data into index 
+#### Insert Data into index 
 
 ```bash
 curl -X POST "localhost:9200/customer/_doc/?pretty" -H 'Content-Type: application/json' -d'
@@ -94,7 +94,7 @@ curl -X POST "localhost:9200/customer/_doc/?pretty" -H 'Content-Type: applicatio
 '
 ```
 
-- Search the index
+#### Search the index
 
 ```bash
 curl -X GET "localhost:9200/customer/_search?pretty" 
