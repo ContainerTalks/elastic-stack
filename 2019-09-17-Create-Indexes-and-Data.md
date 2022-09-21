@@ -144,23 +144,27 @@ curl -XGET 'http://127.0.0.1:9200/twitter/tweet/2?pretty=true'
 - Create customer entity with 1000 records 
 
 ```bash
-curl -sXPUT 'http://localhost:9200/customer/?pretty' -d '{
-  "settings" : {
-      "index" : {
-          "number_of_shards" : 5,
-          "number_of_replicas" : 0
-      }
+curl -X PUT "localhost:9200/customer?pretty" -H 'Content-Type: application/json' -d'
+{
+  "settings": {
+    "index": {
+      "number_of_shards": 5,  
+      "number_of_replicas": 0 
+    }
   }
-}'
+}
+'
+
+
 
 while ! curl -s "localhost:9200/_cat/indices?v" | grep green; do
   sleep 0.1
 done
 
-for i in `seq 1 500`; do
+for i in `seq 1 10`; do
   curl -sXPUT "localhost:9200/customer/external/$i?pretty" -d "
   {
-    \"number\": $i,
+    \"id\": $i,
     \"name\": \"John Doe - $i\"
   }"
 done
